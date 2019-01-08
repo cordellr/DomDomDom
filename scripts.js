@@ -42,18 +42,31 @@ document.addEventListener("DOMContentLoaded", function () {
             return randomColor;
         }
 
+        //assigns random color to square when clicked
         square.addEventListener("click", function () {
             let randomColor = chooseRandomColor();
             square.style.backgroundColor = randomColor;
         })
+
+        //doubleclick on div
+        square.addEventListener("dblclick", function () {
+            let id = this.id;
+            //if even
+            if (id % 2 === 0) {
+                if (this.nextSibling) {
+                    this.nextSibling.remove();
+                } else {
+                    alert('There are no elements to the right to remove.');
+                }
+                //if odd
+            } else {
+                if (this.previousSibling) {
+                    this.previousSibling.remove();
+                } else {
+                    alert('There are no elements to the left to remove.');
+                }
+            }
+        })
     })
-
-
-
-    //h1.addEventListener("dblclick", function () {
-    //let randomColor = chooseRandomColor();
-    //h1.style.color = randomColor;
-    //});
-
 
 })
